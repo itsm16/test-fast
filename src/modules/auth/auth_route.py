@@ -8,11 +8,6 @@ auth_router = APIRouter(
 )
 
 
-@auth_router.get("/test")
-def test_auth():
-    return {"message": "Auth route is working!"}
-
-
 @auth_router.post("/register")
 def register_user_route(body: RegisterUserDto):
     return auth_controller.register_user(body)

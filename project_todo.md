@@ -1,0 +1,9 @@
+- use response dto
+- ~~setup db config~~
+- declare user model in auth module, link it with sql alchemy
+- connect to docker db **testfastapi**
+- setup migrations (alembic)
+- **register users**
+    - hash pass
+- **login**
+    - cookie-based

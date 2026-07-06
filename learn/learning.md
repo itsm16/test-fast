@@ -252,6 +252,14 @@ class Base(DeclarativeBase):
     pass
 ```
 
+- **`create_engine`** — creates a connection pool to the database. Doesn't connect immediately; connects lazily on first query.
+- **`sessionmaker`** — a factory that creates `Session` objects. Instead of opening a new connection each time, it borrows one from the engine's pool — no reconnect overhead.
+- **`DeclarativeBase`** — the base class for all ORM models. Every table class inherits from it so SQLAlchemy can track and sync them.
+- **`DATABASE_URL`** — tells the engine which database to use (SQLite, Postgres, MySQL, etc.).
+- **`engine`** — the core interface to the DB. Handles connection pooling, SQL dialect, and execution.
+- **`SessionLocal`** — the actual session factory you call to get a DB session (e.g., `db = SessionLocal()`). `autocommit=False` means you must explicitly `commit()`; `autoflush=False` prevents automatic flush before queries.
+- **`Base`** — your project's declarative base. All models (`class User(Base)`) register themselves on it, which Alembic uses to detect changes.
+
 ### models.py — Table Definitions
 
 ```python
